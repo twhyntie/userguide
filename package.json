@@ -40,6 +40,8 @@
     "grunt-nodemon": "^0.4.x",
     "helmet": "^0.9.x",
     "jade": "^1.x.x",
+    "jquery": "^2.x.x",
+    "jquery.cookie": "^1.x.x",
     "method-override": "^2.x.x",
     "mongoose": "^4.x.x",
     "morgan": "^1.x.x",
