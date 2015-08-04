@@ -1,8 +1,17 @@
 public/vendor/*
+
+# Node JS
 node_modules/*
+
+# Bower.
+bower_components/*
+
 *.min.js
+
 *.min.js.map
+
 *.min.css
+
 .nodemonignore
 
 # Local environment configuration.

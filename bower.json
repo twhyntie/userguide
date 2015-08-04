@@ -1,0 +1,15 @@
+{
+  "name": "userguide",
+  "version": "0.0.0",
+  "description": "A web application for writing and delivering user guides.",
+  "main": [
+    "css/foundation.css",
+    "js/foundation.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+    "fontawesome": "~4.3.0"
+  }
+}
+

@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "start": "grunt",
-    "update": "david update"
+    "update": "david update",
+    "build": "grunt build",
+    "grunt": "grunt",
+    "postinstall": "bower install && grunt build"
   },
   "dependencies": {
     "async": "^1.x.x",
     "backbone": "^1.x.x",
     "bcrypt": "^0.8.x",
     "body-parser": "^1.x.x",
+    "bower": "^1.4.1",
     "compression": "^1.x.x",
     "connect-mongo": "^0.8.x",
     "cookie-parser": "^1.x.x",
@@ -18,6 +22,14 @@
     "emailjs": "^0.3.x",
     "express": "^4.12.x",
     "express-session": "^1.x.x",
+    "grunt": "~0.4.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-sass": "~0.18.0",
+    "grunt-string-replace": "~0.2.7",
     "helmet": "^0.9.x",
     "jade": "^1.x.x",
     "method-override": "^2.x.x",
@@ -34,6 +46,7 @@
     "passport-twitter": "^1.x.x",
     "sendgrid": "1.0.4",
     "serve-static": "^1.9.x",
+    "time-grunt": "^1.1.0",
     "underscore": "^1.x.x"
   },
   "devDependencies": {

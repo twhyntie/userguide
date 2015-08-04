@@ -11,6 +11,10 @@ module.exports = function(grunt) {
             src: ['js/**', 'less/**'], dest: 'public/vendor/bootstrap/'
           },
           {
+            expand: true, cwd: 'bower_components/foundation/',
+            src: ['js/**', 'css/**'], dest: 'public/vendor/foundation/'
+          },
+          {
             expand: true, cwd: 'node_modules/backbone/',
             src: ['backbone.js'], dest: 'public/vendor/backbone/'
           },

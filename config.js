@@ -14,9 +14,9 @@ if (!process.env.MONGOLAB_URI) {
 exports.mongodb = {
   uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/drywall'
 };
-exports.companyName = 'T. Whyntie';
+exports.companyName = process.env.PROJECT_NAME || 'Acme Ltd.';
 exports.projectName = 'UserGuide';
-exports.systemEmail = process.env.SENDGRID_USERNAME || process.env.SYSTEM_EMAIL_ADDRESS || your@email.com
+exports.systemEmail = process.env.SENDGRID_USERNAME || process.env.SYSTEM_EMAIL_ADDRESS || 'your@email.com';
 exports.cryptoKey = 'k3yb0ardc4t';
 exports.loginAttempts = {
   forIp: 50,
