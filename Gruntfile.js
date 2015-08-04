@@ -12,7 +12,7 @@ module.exports = function(grunt) {
           },
           {
             expand: true, cwd: 'bower_components/foundation/',
-            src: ['js/**', 'css/**'], dest: 'public/vendor/foundation/'
+            src: ['js/**'], dest: 'public/vendor/foundation/'
           },
           {
             expand: true, cwd: 'node_modules/backbone/',
@@ -95,6 +95,23 @@ module.exports = function(grunt) {
           'public/less/**/*.less'
         ],
         tasks: ['less:layouts']
+      }
+    },
+    sass: {
+      options: {
+        // If you can't get source maps to work, run the following command in your terminal:
+        // $ sass scss/foundation.scss:css/foundation.css --sourcemap
+        // (see this link for details: http://thesassway.com/intermediate/using-source-maps-with-sass )
+        sourceMap: true
+      },
+
+      dist: {
+        options: {
+          outputStyle: 'compressed'
+        },
+        files: {
+          'public/vendor/foundation/css/foundation.css': 'scss/foundation.scss'
+        }
       }
     },
     uglify: {
@@ -213,6 +230,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -224,6 +242,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
 
   grunt.registerTask('default', ['copy:vendor', 'newer:uglify', 'newer:less', 'concurrent']);
-  grunt.registerTask('build', ['copy:vendor', 'uglify', 'less']);
+  grunt.registerTask('build', ['copy:vendor', 'uglify', 'less', 'sass']);
   grunt.registerTask('lint', ['jshint']);
 };

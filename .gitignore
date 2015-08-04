@@ -16,3 +16,6 @@ bower_components/*
 
 # Local environment configuration.
 .env
+
+# Old files.
+*_old

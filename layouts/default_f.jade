@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    block head
+      title #{title}
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/layouts/core.min.css?#{cacheBreaker}')
+    link(rel='stylesheet', href='/vendor/foundation/css/foundation.css?#{cacheBreaker}')
+    block neck
+  body
+    div.off-canvas-wrap(data-offcanvas='')
+      div.inner-wrap
+        nav.tab-bar.show-for-small
+          section.left-small
+            a.left-off-canvas-toggle.menu-icon(href="#")
+              span
+          section.middle.tab-bar-section
+            h1.title UserGuide
+        aside.left-off-canvas-menu
+          ul.off-canvas-list
+            li: label Account
+              if user && user.username
+                li: a(href='#{user.defaultReturnUrl}')
+                  i.fa.fa-user
+                  |  #{user.username}
+              else
+                li: a(href='/login/')
+                  i.fa.fa-user
+                  | &nbsp;
+                  | Sign In
+                li: a(href='/signup/')
+                  i.fa.fa-user
+                  | &nbsp;
+                  | Sign Up
+            li: label UserGuide
+            li: a(href='/') Home
+            li: a(href='/about/') About
+            li: a(href='/contact/') Contact
+        nav.top-bar.show-for-medium-up(data-topbar, role='navigation')
+          ul.title-area
+            li.name
+              h1: a(href='/') UserGuide
+            section.top-bar-section
+              ul.left
+                li: a(href='/') Home
+                li: a(href='/about/') About
+                li: a(href='/signup/') Sign Up
+                li: a(href='/contact/') Contact
+              ul.right
+                if user && user.username
+                  li: a(href='#{user.defaultReturnUrl}')
+                    i.fa.fa-user
+                    |  #{user.username}
+                else
+                  li: a(href='/login/')
+                    i.fa.fa-user
+                    | &nbsp;
+                    | Sign In
+        section.main-section
+          block body
+          hr
+          h6.subheader.text-center &#169; #{copyrightYear} #{copyrightName}
+
+    div.ajax-spinner
+      img(src='/media/ajax-pulse.gif', alt='Loading')
+
+    //if lte IE 9
+      script(src='/layouts/ie-sucks.min.js?#{cacheBreaker}')
+    script(src='/layouts/core.min.js?#{cacheBreaker}')
+
+    block feet
+    script(src='/vendor/foundation/js/foundation.min.js?#{cacheBreaker}')
+    script.
+      $(document).foundation();
