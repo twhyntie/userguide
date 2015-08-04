@@ -1,12 +1,22 @@
 'use strict';
 
 exports.port = process.env.PORT || 3000;
+
+// For retrieving (local) environment variables.
+var env = require('node-env-file');
+//
+if (!process.env.MONGOLAB_URI) {
+  console.log('process.env.MONGOLAB_URI is undefined - dev mode?');
+  // If we're in development, get the environment variables.
+  env(__dirname + '/.env');
+}
+
 exports.mongodb = {
   uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/drywall'
 };
 exports.companyName = 'T. Whyntie';
 exports.projectName = 'UserGuide';
-exports.systemEmail = 'your@email.addy';
+exports.systemEmail = process.env.SENDGRID_USERNAME || process.env.SYSTEM_EMAIL_ADDRESS || your@email.com
 exports.cryptoKey = 'k3yb0ardc4t';
 exports.loginAttempts = {
   forIp: 50,
@@ -17,13 +27,13 @@ exports.requireAccountVerification = false;
 exports.smtp = {
   from: {
     name: process.env.SMTP_FROM_NAME || exports.projectName +' Website',
-    address: process.env.SMTP_FROM_ADDRESS || 'your@email.addy'
+    address: process.env.SMTP_FROM_ADDRESS || process.env.SENDGRID_USERNAME || ''
   },
   credentials: {
-    user: process.env.SMTP_USERNAME || 'your@email.addy',
-    password: process.env.SMTP_PASSWORD || 'bl4rg!',
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    ssl: true
+    user: process.env.SMTP_USERNAME || process.env.SENDGRID_USERNAME || '',
+    password: process.env.SMTP_PASSWORD || process.env.SENDGRID_PASSWORD || '',
+    host: process.env.SMTP_HOST || 'smtp.sendgrid.net' || '',
+    ssl: false
   }
 };
 exports.oauth = {

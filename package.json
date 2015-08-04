@@ -23,6 +23,7 @@
     "method-override": "^2.x.x",
     "mongoose": "^4.x.x",
     "morgan": "^1.x.x",
+    "node-env-file": "~0.1.7",
     "passport": "^0.2.x",
     "passport-facebook": "^2.x.x",
     "passport-github": "^0.1.x",
@@ -31,6 +32,7 @@
     "passport-oauth": "^1.x.x",
     "passport-tumblr": "^0.1.x",
     "passport-twitter": "^1.x.x",
+    "sendgrid": "1.0.4",
     "serve-static": "^1.9.x",
     "underscore": "^1.x.x"
   },

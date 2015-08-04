@@ -68,8 +68,8 @@ exports = module.exports = function(req, res, options) {
         }
       }
 
-      var emailjs = require('emailjs/email');
-      var emailer = emailjs.server.connect( req.app.config.smtp.credentials );
+      var emailer  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+
       emailer.send({
         from: options.from,
         to: options.to,
