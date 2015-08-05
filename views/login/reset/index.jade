@@ -1,4 +1,4 @@
-extends ../../../layouts/default
+extends ../../../layouts/default_f
 
 block head
   title Reset Your Password
@@ -7,43 +7,89 @@ block feet
   script(src='/views/login/reset/index.min.js?#{cacheBreaker}')
 
 block body
-  div.row
-    div.col-sm-6
-      div.page-header
-        h1 Reset Your Password
+  .row
+    .small-12.columns
+      p
       div#reset
 
   script(type='text/template', id='tmpl-reset')
-    form
-      div.alerts
-        |<% _.each(errors, function(err) { %>
-        div.alert.alert-danger.alert-dismissable
-          button.close(type='button', data-dismiss='alert') &times;
-          |<%- err %>
-        |<% }); %>
-        |<% if (success) { %>
-        div.alert.alert-info.alert-dismissable
-          button.close(type='button', data-dismiss='alert') &times;
-          | Your password has been reset. Please login to confirm.
-        |<% } %>
-        |<% if (id == undefined) { %>
-        div.alert.alert-warning.alert-dismissable
-          button.close(type='button', data-dismiss='alert') &times;
-          | You do not have a valid reset request.
-        |<% } %>
-      |<% if (!success && id != undefined) { %>
-      div.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-        label New Password:
-        input.form-control(type='password', name='password', value!='<%= password %>')
-        span.help-block <%- errfor.password %>
-      div.form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
-        label Confirm Password:
-        input.form-control(type='password', name='confirm', value!='<%= confirm %>')
-        span.help-block <%- errfor.confirm %>
-      |<% } %>
-      div.form-group
-        |<% if (!success && id != undefined) { %>
-        button.btn.btn-primary.btn-reset(type='button') Set Password
-        |<% } %>
-        |&nbsp;
-        a.btn.btn-link(href='/login/') Back to Login
+    .row
+      .small-12.columns
+        form
+          fieldset
+            legend Reset Password
+            .row
+              .small-12.columns
+                .alerts
+                  |<% _.each(errors, function(err) { %>
+                  .alert-box.alert(data-alert='')
+                    <%- err %>
+                    a.close(href='#', onclick="$(document).foundation('reflow')") &times;
+                  |<% }); %>
+                  |<% if (success) { %>
+                  .alert-box(data-alert='')
+                    | Your password has been reset. Please login to confirm.
+                    a.close(href='#', onclick="$(document).foundation('reflow')") &times;
+                  |<% } %>
+                  |<% if (id == undefined) { %>
+                  .alert-box.alert(data-alert='')
+                    | You do not have a valid reset request.
+                    a.close(href='#', onclick="$(document).foundation('reflow')") &times;
+                  |<% } %>
+                |<% if (!success && id != undefined) { %>
+                .form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+                  label New Password:<% if(errfor.password) { %>
+                  span.help-block.label.alert <%- errfor.password %><% } %>
+                  input.form-control(type='password', name='password', value!='<%= password %>')
+                .form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
+                  label Confirm Password:<% if(errfor.confirm) { %>
+                  span.help-block.label.alert <%- errfor.confirm %><% } %>
+                  input.form-control(type='password', name='confirm', value!='<%= confirm %>')
+                |<% } %>
+                .form-actions
+                  |<% if (!success && id != undefined) { %>
+                  button.btn-reset.expand(type='button') Set Password
+                  |<% } %>
+                  a.button.secondary.expand(href='/login/') Back to Login
+//-      div.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+//-        label New Password:
+//-        input.form-control(type='password', name='password', value!='<%= password %>')
+//-        span.help-block <%- errfor.password %>
+//-      div.form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
+//-        label Confirm Password:
+//-        input.form-control(type='password', name='confirm', value!='<%= confirm %>')
+//-        span.help-block <%- errfor.confirm %>
+//-      |<% } %>
+//-    form
+//-      div.alerts
+//-        |<% _.each(errors, function(err) { %>
+//-        div.alert.alert-danger.alert-dismissable
+//-          button.close(type='button', data-dismiss='alert') &times;
+//-          |<%- err %>
+//-        |<% }); %>
+//-        |<% if (success) { %>
+//-        div.alert.alert-info.alert-dismissable
+//-          button.close(type='button', data-dismiss='alert') &times;
+//-          | Your password has been reset. Please login to confirm.
+//-        |<% } %>
+//-        |<% if (id == undefined) { %>
+//-        div.alert.alert-warning.alert-dismissable
+//-          button.close(type='button', data-dismiss='alert') &times;
+//-          | You do not have a valid reset request.
+//-        |<% } %>
+//-      |<% if (!success && id != undefined) { %>
+//-      div.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+//-        label New Password:
+//-        input.form-control(type='password', name='password', value!='<%= password %>')
+//-        span.help-block <%- errfor.password %>
+//-      div.form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
+//-        label Confirm Password:
+//-        input.form-control(type='password', name='confirm', value!='<%= confirm %>')
+//-        span.help-block <%- errfor.confirm %>
+//-      |<% } %>
+//-      div.form-group
+//-        |<% if (!success && id != undefined) { %>
+//-        button.btn.btn-primary.btn-reset(type='button') Set Password
+//-        |<% } %>
+//-        |&nbsp;
+//-        a.btn.btn-link(href='/login/') Back to Login

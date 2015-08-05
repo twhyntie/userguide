@@ -43,7 +43,7 @@ exports.set = function(req, res){
       }
 
       if (!user) {
-        workflow.outcome.errors.push('Invalid request.');
+        workflow.outcome.errors.push('Invalid request - not a user.');
         return workflow.emit('response');
       }
 
@@ -53,7 +53,7 @@ exports.set = function(req, res){
         }
 
         if (!isValid) {
-          workflow.outcome.errors.push('Invalid request.');
+          workflow.outcome.errors.push('Invalid request - not valid.');
           return workflow.emit('response');
         }
 

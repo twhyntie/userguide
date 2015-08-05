@@ -9,7 +9,7 @@ $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // Sets the path for Font Awesome - should be in the public folder.
-//$fa-font-path: "../assets/fontawesome/fonts";
+$fa-font-path: "../../../vendor/font-awesome/fonts";
 
 // We use these to define default font weights
 $font-weight-normal: normal !default;
@@ -65,4 +65,28 @@ $xlarge-breakpoint: em-calc(1920);
 // Font Awesome sizing. FIXME: Do this more elegantly...
 i.fa-3 {
   font-size:3em;
+}
+
+// Remove the AJAX spinner...
+.ajax-spinner {
+  position: absolute;
+  z-index: 999;
+  display: none;
+  padding: 5px;
+  font-size: inherit;
+  line-height: 11px;
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.ajax-spinner img {
+    width: inherit;
+    height: inherit;
+    margin: 0;
+}
+
+// Alert text
+.alert-text {
+  font-style:italic;
+  color: $alert-color;
 }
